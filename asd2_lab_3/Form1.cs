@@ -25,8 +25,9 @@ namespace asd2_lab_3
         {
             dataGridView1.Rows.Clear();
             var records = dbManager.ReadIndexFile()
-                                   .Select(record => dbManager.SearchRecord(record.Key))
-                                   .Where(record => record != null);
+                                   .Select(record => dbManager.SearchRecordWithComparisons(record.Key))
+                                   .Where(result => result.record != null)
+                                   .Select(result => result.record);
 
             foreach ( var record in records)
             {
@@ -98,15 +99,16 @@ namespace asd2_lab_3
         {
             if (int.TryParse(txtKey.Text, out int key))
             {
-                var record = dbManager.SearchRecord(key);
+                var (record, comparisons) = dbManager.SearchRecordWithComparisons(key);
                 if (record != null)
                 {
-                    MessageBox.Show($"Запис знайдено:\nКлюч: {record.Key}\nДані: {record.Data}",
+                    MessageBox.Show($"Запис знайдено:\nКлюч: {record.Key}\nДані: {record.Data}\nПорівнянь: {comparisons}",
                                     "Результат пошуку", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Запис із таким ключем не знайдено!", "Результат пошуку", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Запис із таким ключем не знайдено!\nПорівнянь: {comparisons}",
+                                    "Результат пошуку", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else

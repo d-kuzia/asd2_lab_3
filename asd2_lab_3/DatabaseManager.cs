@@ -36,21 +36,21 @@ namespace asd2_lab_3
         }
 
         // Пошук запису
-        public Record SearchRecord(int key)
+        public (Record record, int comparisons) SearchRecordWithComparisons(int key)
         {
             var indexRecords = ReadIndexFile();
 
-            // Бінарний пошук
-            int left = 0;
-            int right = indexRecords.Count - 1;
+            int left = 0, right = indexRecords.Count - 1;
+            int comparisons = 0;
 
             while (left <= right)
             {
+                comparisons++;
                 int mid = (left + right) / 2;
 
                 if (indexRecords[mid].Key == key)
                 {
-                    return ReadDataFromFile(long.Parse(indexRecords[mid].Data));
+                    return (ReadDataFromFile(long.Parse(indexRecords[mid].Data)), comparisons);
                 }
 
                 if (indexRecords[mid].Key < key)
@@ -59,7 +59,7 @@ namespace asd2_lab_3
                     right = mid - 1;
             }
 
-            return null;
+            return (null, comparisons);
         }
 
         // Видалення запису
