@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace asd2_lab_3
 {
@@ -38,10 +39,25 @@ namespace asd2_lab_3
         public Record SearchRecord(int key)
         {
             var indexRecords = ReadIndexFile();
-            var indexRecord = indexRecords.FirstOrDefault(r => r.Key == key);
-            if (indexRecord == null) return null;
 
-            return ReadDataFromFile(long.Parse(indexRecord.Data));
+            // Бінарний пошук
+            int left = 0;
+            int right = indexRecords.Count - 1;
+
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+                if (indexRecords[mid].Key == key)
+                {
+                    return ReadDataFromFile(long.Parse(indexRecords[mid].Data));
+                }
+                if (indexRecords[mid].Key < key)
+                    left = mid + 1;
+                else
+                    right = mid - 1;
+            }
+
+            return null;
         }
 
         // Видалення запису
@@ -49,6 +65,7 @@ namespace asd2_lab_3
         {
             var indexRecords = ReadIndexFile();
             var indexRecord = indexRecords.FirstOrDefault(r => r.Key == key);
+
             if (indexRecord == null) return false;
 
             indexRecords.Remove(indexRecord);
@@ -62,6 +79,7 @@ namespace asd2_lab_3
         {
             var indexRecords = ReadIndexFile();
             var indexRecord = indexRecords.FirstOrDefault(r => r.Key == key);
+
             if (indexRecord == null) return false;
 
             long position = long.Parse(indexRecord.Data);
@@ -133,7 +151,7 @@ namespace asd2_lab_3
                 }
             }
 
-            return indexRecords;
+            return indexRecords.OrderBy(r => r.Key).ToList();
         }
 
         private void WriteIndexFile(List<Record> indexRecords)
