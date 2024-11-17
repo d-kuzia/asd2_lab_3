@@ -42,8 +42,19 @@ namespace asd2_lab_3
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ColumnKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Location = new System.Drawing.Point(289, 61);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(64, 20);
+            this.btnDeleteAll.TabIndex = 9;
+            this.btnDeleteAll.Text = "Delete All";
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // txtKey
             // 
@@ -159,6 +170,7 @@ namespace asd2_lab_3
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.txtKey);
             this.Controls.Add(this.lblKey);
+            this.Controls.Add(this.btnDeleteAll);
             this.Name = "Form1";
             this.Text = "Lab 3";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -180,6 +192,7 @@ namespace asd2_lab_3
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn ColumnKey;
         private DataGridViewTextBoxColumn ColumnData;
+        private Button btnDeleteAll;
     }
 }
 

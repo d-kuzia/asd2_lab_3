@@ -47,10 +47,12 @@ namespace asd2_lab_3
             while (left <= right)
             {
                 int mid = (left + right) / 2;
+
                 if (indexRecords[mid].Key == key)
                 {
                     return ReadDataFromFile(long.Parse(indexRecords[mid].Data));
                 }
+
                 if (indexRecords[mid].Key < key)
                     left = mid + 1;
                 else
@@ -165,6 +167,12 @@ namespace asd2_lab_3
                     writer.Write(long.Parse(record.Data));
                 }
             }
+        }
+
+        public void DeleteAllRecords()
+        {
+            File.WriteAllText(DataFile, string.Empty);
+            File.WriteAllText(IndexFile, string.Empty);
         }
     }
 }

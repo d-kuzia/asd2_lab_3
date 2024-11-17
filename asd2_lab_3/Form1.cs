@@ -139,5 +139,20 @@ namespace asd2_lab_3
                 txtData.BackColor = Color.White;
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Ви впевнені, що хочете видалити всі записи?",
+                                                "Підтвердження",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Warning);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                dbManager.DeleteAllRecords();
+                MessageBox.Show("Усі записи успішно видалені!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadDataGrid();
+            }
+        }
     }
 }
