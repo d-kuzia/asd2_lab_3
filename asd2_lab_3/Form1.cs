@@ -154,5 +154,19 @@ namespace asd2_lab_3
                 LoadDataGrid();
             }
         }
+
+        private void btnGenerateRecords_Click(object sender, EventArgs e)
+        {
+            var random = new Random();
+            for (int i = 0; i < 1000; i++)
+            {
+                int key = random.Next(1, 5000);
+                string data = "Data_" + random.Next(1, 1000);
+                dbManager.AddRecord(key, data);
+            }
+
+            MessageBox.Show("1000 записів успішно згенеровано!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadDataGrid();
+        }
     }
 }

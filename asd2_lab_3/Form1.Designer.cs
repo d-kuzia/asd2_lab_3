@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace asd2_lab_3
@@ -43,18 +44,9 @@ namespace asd2_lab_3
             this.ColumnKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.btnGenerateRecords = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnDeleteAll
-            // 
-            this.btnDeleteAll.Location = new System.Drawing.Point(289, 61);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(64, 20);
-            this.btnDeleteAll.TabIndex = 9;
-            this.btnDeleteAll.Text = "Delete All";
-            this.btnDeleteAll.UseVisualStyleBackColor = true;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // txtKey
             // 
@@ -156,6 +148,26 @@ namespace asd2_lab_3
             this.ColumnData.Name = "ColumnData";
             this.ColumnData.Width = 400;
             // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Location = new System.Drawing.Point(527, 61);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(64, 20);
+            this.btnDeleteAll.TabIndex = 9;
+            this.btnDeleteAll.Text = "Delete All";
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
+            // btnGenerateRecords
+            // 
+            this.btnGenerateRecords.Location = new System.Drawing.Point(597, 61);
+            this.btnGenerateRecords.Name = "btnGenerateRecords";
+            this.btnGenerateRecords.Size = new System.Drawing.Size(64, 20);
+            this.btnGenerateRecords.TabIndex = 10;
+            this.btnGenerateRecords.Text = "Generate";
+            this.btnGenerateRecords.UseVisualStyleBackColor = true;
+            this.btnGenerateRecords.Click += new System.EventHandler(this.btnGenerateRecords_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,6 +183,7 @@ namespace asd2_lab_3
             this.Controls.Add(this.txtKey);
             this.Controls.Add(this.lblKey);
             this.Controls.Add(this.btnDeleteAll);
+            this.Controls.Add(this.btnGenerateRecords);
             this.Name = "Form1";
             this.Text = "Lab 3";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -193,6 +206,7 @@ namespace asd2_lab_3
         private DataGridViewTextBoxColumn ColumnKey;
         private DataGridViewTextBoxColumn ColumnData;
         private Button btnDeleteAll;
+        private Button btnGenerateRecords;
     }
 }
 
